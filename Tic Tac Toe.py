@@ -15,15 +15,15 @@ def make_move(user):
 
     x = int(input(f'User {user}, enter row number: '))
     y = int(input(f'User {user}, enter cols number: '))
-
-    #for value in '012':
-    #    if x!=value or y!=value:
-    #       print('there is no such cell, please re-enter, 0<=x<=2 and 0<=y<=2')
-    #      x = int(input(f'User {user}, enter new row number: '))
-    #        y = int(input(f'User {user}, enter new cols number: '))
-    #   else:
-    #        board[x+1][y+1] = user
+    if (x<0 or x>2) or (y<0 or y>2):
+        while True:
+            print('Enter new value!')
+            x = int(input(f'User {user}, enter row number: '))
+            y = int(input(f'User {user}, enter cols number: '))
+            if 0<=x<=2 and 0<=y<=2:
+                break
     board[x + 1][y + 1] = user
+
 
 def check_win():
     for i in range(1, 4):
@@ -48,7 +48,7 @@ def play_game():
         if winner:
             print(f'Player {winner} wins!')
             break
-    else:
-        print('Draw!')
+        else:
+            print('Draw!')
 
 play_game()
